@@ -15,6 +15,9 @@ app.use(cors());
 app.use('/api', (req, res) => {
     res.send("Hello Alok");
 });
+app.use('/', (req, res) => {
+    res.send("Home Page");
+});
 
 // Start server
 const PORT = process.env.PORT || 5000;

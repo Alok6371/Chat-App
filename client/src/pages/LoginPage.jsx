@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 const LoginPage = () => {
   const [currState, setCurrState] = useState('Sign Up');
@@ -8,39 +8,54 @@ const LoginPage = () => {
   const [bio, setBio] = useState('');
   const [isDataSubmitted, setIsDataSubmitted] = useState(false);
   const [agreeTerms, setAgreeTerms] = useState(false);
+  const [loading, setLoading] = useState(true);
+  const [showPage, setShowPage] = useState(false); // 👈 New state
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setLoading(false);
+      setTimeout(() => setShowPage(true), 100); // 👈 Triggers fade-in
+    }, 2000);
+    return () => clearTimeout(timer);
+  }, []);
 
   const onSubmitHandler = (event) => {
     event.preventDefault();
 
-    // First step: show bio field after basic info is filled
     if (currState === 'Sign Up' && !isDataSubmitted) {
       setIsDataSubmitted(true);
       return;
     }
 
-    // Second step: submit all data (including bio)
     if (currState === 'Sign Up' && isDataSubmitted) {
-      // Handle sign up with bio here
       console.log("Sign up successful", fullName, email, password, bio);
-      // Reset form or redirect as needed
       return;
     }
 
-    // Handle login
     if (currState === 'Login') {
-      // Handle login here
       console.log("Login successful", email, password);
     }
   };
 
+  if (loading) {
+    return (
+      <div className='min-h-screen flex items-center justify-center bg-gray-900 text-white'>
+        <div className="flex flex-col items-center gap-4">
+          <div className="w-12 h-12 border-4 border-dashed rounded-full animate-spin border-violet-500"></div>
+          <p className="text-lg">Loading...</p>
+        </div>
+      </div>
+    );
+  }
+
   return (
-    <div className='min-h-screen bg-cover bg-center flex items-center justify-center gap-8 sm:justify-evenly max-sm:flex-col backdrop-blur-2xl'>
-      {/* Left Side */}
+    <div
+      className={`min-h-screen bg-cover bg-center flex items-center justify-center gap-8 sm:justify-evenly max-sm:flex-col backdrop-blur-2xl 
+      transition-opacity duration-1000 ${showPage ? 'opacity-100' : 'opacity-0'}`} // 👈 Fade-in transition
+    >
       <img src="https://res.cloudinary.com/dn3kbrwp9/image/upload/v1749470610/logo_big_jnmlaj.png" alt="Logo" className='w-[min(30vw,250px)]' />
 
-      {/* Right Side----------------- */}
       <form onSubmit={onSubmitHandler} className='border-2 bg-white/10 text-white border-gray-500 p-6 flex flex-col gap-3 rounded-lg shadow-lg w-[400px]'>
-        {/* Arrow icon------------  */}
         <h2 className='font-medium text-2xl flex justify-between items-center mb-3'>
           {currState}
           {isDataSubmitted && currState === 'Sign Up' && (
@@ -53,7 +68,6 @@ const LoginPage = () => {
           )}
         </h2>
 
-        {/* Step 1: Basic Info */}
         {!isDataSubmitted && currState === 'Sign Up' && (
           <input
             type="text"
@@ -86,7 +100,6 @@ const LoginPage = () => {
           </>
         )}
 
-        {/* Step 2: Bio */}
         {isDataSubmitted && currState === 'Sign Up' && (
           <textarea
             rows={4}
@@ -133,7 +146,6 @@ const LoginPage = () => {
             )
           }
         </div>
-
       </form>
     </div>
   );
