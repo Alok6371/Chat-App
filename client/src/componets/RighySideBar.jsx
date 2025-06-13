@@ -36,7 +36,7 @@ const RightSideBar = ({ selectedUser }) => {
         </div>
       </div>
       <button className='absolute bottom-5 left-1/2 transform -translate-x-1/2 bg-gradient-to-r from-purple-400 to-violet-600 tet-white border-none text-sm  py-2 px-20 rounded-full cursor-pointer font-semibold '>
-        Logou
+        Logout
       </button>
     </div>
   ); 
