@@ -39,7 +39,7 @@ const messagesDummyData = [
     "_id": "680f573cf10f3cd28382f0c0",
     "senderId": "680f50e4f10f3cd28382ecf9",
     "receiverId": "680f5116f10f3cd28382ed02",
-    "image": 'https://i.postimg.cc/3rC0BZJX/img1.jpg',
+    "image": 'https://res.cloudinary.com/dn3kbrwp9/image/upload/v1749470614/img1_bdjdul.jpg',
     "seen": true,
     "createdAt": "2025-04-28T10:23:56.265Z",
   },
@@ -47,7 +47,7 @@ const messagesDummyData = [
     "_id": "680f5745f10f3cd28382f0c5",
     "senderId": "680f5116f10f3cd28382ed02",
     "receiverId": "680f50e4f10f3cd28382ecf9",//////////
-    "image": 'https://i.postimg.cc/pXWh1npg/img2.jpg',
+    "image": 'https://res.cloudinary.com/dn3kbrwp9/image/upload/v1749470615/img2_weckpv.jpg',
     "seen": true,
     "createdAt": "2025-04-28T10:24:05.164Z",
   },
