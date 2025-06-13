@@ -151,7 +151,7 @@ const ChatContainer = ({ selectedUser, setSelectedUser }) => {
   ) : (
     /////////Staring Part
     <div className='flex flex-col items-center justify-center  gap-2 file-g bg-white/10 max-md:hidden'>
-      <img src="https://i.postimg.cc/4ybM3Vxp/logo-icon.png" alt="" className='max-w-16' />
+      <img src="https://res.cloudinary.com/dn3kbrwp9/image/upload/v1749470610/logo_icon_m6ziz4.png" alt="" className='max-w-16' />
       <p className='text-lg text-white'> Chat AnyTime ,Any Where</p>
     </div>
   )
